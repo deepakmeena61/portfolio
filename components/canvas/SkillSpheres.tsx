@@ -35,8 +35,8 @@ export default function SkillSpheres({ isMobile = false }: SkillSpheresProps) {
 
   const nodeStates = useMemo(() => {
     const bounds = isMobile
-      ? { x: 2.35, y: 0.7, z: 1.45 }
-      : { x: 3.2, y: 0.95, z: 2.2 };
+      ? { x: 2.7, y: 0.85, z: 1.7 }
+      : { x: 4.95, y: 1.5, z: 2.8 };
     const spawned: THREE.Vector3[] = [];
 
     const makePosition = (radius: number) => {
@@ -81,8 +81,8 @@ export default function SkillSpheres({ isMobile = false }: SkillSpheresProps) {
   useFrame(({ clock }, delta) => {
     const t = clock.getElapsedTime();
     const bounds = isMobile
-      ? { x: 2.35, y: 0.7, z: 1.45 }
-      : { x: 3.2, y: 0.95, z: 2.2 };
+      ? { x: 2.7, y: 0.85, z: 1.7 }
+      : { x: 4.95, y: 1.5, z: 2.8 };
     const speed = isMobile ? 0.95 : 1.25;
 
     if (root.current) {
@@ -147,20 +147,20 @@ export default function SkillSpheres({ isMobile = false }: SkillSpheresProps) {
                   isMobile
                     ? undefined
                     : (event) => {
-                        event.stopPropagation();
-                        clearHoverOutTimer();
-                        setHovered(index);
-                      }
+                      event.stopPropagation();
+                      clearHoverOutTimer();
+                      setHovered(index);
+                    }
                 }
                 onPointerOut={
                   isMobile
                     ? undefined
-                      : () => {
-                          clearHoverOutTimer();
-                          hoverOutTimer.current = window.setTimeout(() => {
-                            setHovered((current) => (current === index ? null : current));
-                          }, 110);
-                      }
+                    : () => {
+                      clearHoverOutTimer();
+                      hoverOutTimer.current = window.setTimeout(() => {
+                        setHovered((current) => (current === index ? null : current));
+                      }, 110);
+                    }
                 }
               >
                 <sphereGeometry
