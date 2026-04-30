@@ -1,14 +1,14 @@
 export const PERSONAL = {
   name: "Deepak Meena",
   shortLogo: "Deepak.",
-  title: "Applied AI / GenAI Engineer",
+  title: "Data Science / Applied AI / GenAI Engineer",
   location: "Washington D.C., USA",
   email: "meena.deepak2201@gmail.com",
   linkedin: "https://www.linkedin.com/in/deepakkumarmeena/",
   github: "https://github.com/deepakmeena61",
   philosophy:
     "I don't just build models, I build things that make someone's Tuesday a little easier.",
-  heroTyping: "Applied AI / GenAI Engineer | LLMs, RAG, ML Systems"
+  heroTyping: "Data Science / Applied AI / GenAI Engineer | LLMs, RAG, ML Systems"
 } as const;
 
 export const NAV_LINKS = [
@@ -271,7 +271,7 @@ export const REPO_DESCRIPTION_OVERRIDES: Record<string, string> = {
 };
 
 export const BIO_PARAGRAPHS = [
-  "I am Deepak - an Applied AI / GenAI Engineer based in Washington D.C.",
+  "I am Deepak - a Data Science / Applied AI / GenAI Engineer based in Washington D.C.",
   "I turn messy, complex data into AI products that actually work in production. From classical ML to modern LLM and RAG systems, I care about building things that are reliable, measurable, and maintainable long after launch.",
   "Currently at Spirent Communications, where I work on scalable analytics, GenAI use cases, and tooling that helps teams ship with confidence.",
   "When I am not training models, you will find me on a soccer pitch, mixing beats in my kitchen while experimenting with a new recipe, hiking a trail somewhere, or journaling my thoughts at the end of a long day."
