@@ -238,7 +238,14 @@ export const HOBBIES = [
   }
 ] as const;
 
-export const FEATURED_REPOS = [
+export type FeaturedRepo = {
+  name: string;
+  summary: string;
+  liveUrl?: string;
+  liveLabel?: string;
+};
+
+export const FEATURED_REPOS: readonly FeaturedRepo[] = [
   {
     name: "querypilot",
     summary:
