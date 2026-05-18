@@ -240,9 +240,11 @@ export const HOBBIES = [
 
 export const FEATURED_REPOS = [
   {
-    name: "Financial-Fraud-Detection",
+    name: "querypilot",
     summary:
-      "Fraud detection system on online payments data with engineered balance-inconsistency features, class balancing, and comparative modeling across Logistic Regression, Decision Tree, and Random Forest."
+      "Turn plain English into SQL, charts, and business insights - AI-powered analytics on 90K Spotify tracks.",
+    liveUrl: "https://querypilot-spotify.streamlit.app/",
+    liveLabel: "Try QueryPilot Live"
   },
   {
     name: "Image-Colorisation",

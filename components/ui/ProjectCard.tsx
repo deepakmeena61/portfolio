@@ -7,6 +7,8 @@ type ProjectCardProps = {
   repo: GitHubRepo;
   featured?: boolean;
   summaryOverride?: string;
+  liveDemoUrl?: string;
+  liveDemoLabel?: string;
 };
 
 const LANGUAGE_COLORS: Record<string, string> = {
@@ -22,7 +24,9 @@ const LANGUAGE_COLORS: Record<string, string> = {
 export default function ProjectCard({
   repo,
   featured = false,
-  summaryOverride
+  summaryOverride,
+  liveDemoUrl,
+  liveDemoLabel
 }: ProjectCardProps) {
   const language = repo.language ?? "Code";
   const languageColor = LANGUAGE_COLORS[language] ?? "#8892a4";
@@ -55,14 +59,26 @@ export default function ProjectCard({
         <span>Stars: {repo.stargazers_count}</span>
         <span>Forks: {repo.forks_count}</span>
       </div>
-      <a
-        href={repo.html_url}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-6 inline-flex text-sm text-freq-ai transition-colors group-hover:text-[rgb(133,227,255)]"
-      >
-        View on GitHub
-      </a>
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        {liveDemoUrl ? (
+          <a
+            href={liveDemoUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center rounded-full border border-[rgba(0,212,255,0.45)] bg-[rgba(0,212,255,0.12)] px-3 py-1.5 text-xs font-semibold text-[rgb(147,239,255)] transition-colors hover:bg-[rgba(0,212,255,0.2)]"
+          >
+            {liveDemoLabel ?? "Try Live Demo"}
+          </a>
+        ) : null}
+        <a
+          href={repo.html_url}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex text-sm text-freq-ai transition-colors group-hover:text-[rgb(133,227,255)]"
+        >
+          View on GitHub
+        </a>
+      </div>
     </motion.article>
   );
 }

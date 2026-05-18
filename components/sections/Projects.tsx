@@ -22,6 +22,8 @@ const fallbackRepo = (name: string): GitHubRepo => ({
   updated_at: "2026-01-01T00:00:00Z"
 });
 
+const normalizeRepoName = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, "");
+
 export default function Projects({ repos }: ProjectsProps) {
   const [language, setLanguage] = useState<string>("All");
   const [hydrated, setHydrated] = useState(false);
@@ -42,19 +44,24 @@ export default function Projects({ repos }: ProjectsProps) {
   const featured = useMemo(() => {
     return FEATURED_REPOS.map((item) => {
       const match =
-        repos.find((repo) => repo.name.toLowerCase() === item.name.toLowerCase()) ??
+        repos.find((repo) => normalizeRepoName(repo.name) === normalizeRepoName(item.name)) ??
         fallbackRepo(item.name);
-      return { repo: match, summary: item.summary };
+      return {
+        repo: match,
+        summary: item.summary,
+        liveUrl: item.liveUrl,
+        liveLabel: item.liveLabel
+      };
     });
   }, [repos]);
 
   const featuredNames = useMemo(
-    () => new Set(FEATURED_REPOS.map((item) => item.name.toLowerCase())),
+    () => new Set(FEATURED_REPOS.map((item) => normalizeRepoName(item.name))),
     []
   );
 
   const otherRepos = useMemo(() => {
-    const filtered = repos.filter((repo) => !featuredNames.has(repo.name.toLowerCase()));
+    const filtered = repos.filter((repo) => !featuredNames.has(normalizeRepoName(repo.name)));
     if (language === "All") return filtered;
     return filtered.filter((repo) => (repo.language ?? "Unknown") === language);
   }, [featuredNames, language, repos]);
@@ -112,7 +119,13 @@ export default function Projects({ repos }: ProjectsProps) {
         >
           {featured.map((entry) => (
             <motion.div key={entry.repo.name} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-              <ProjectCard repo={entry.repo} featured summaryOverride={entry.summary} />
+              <ProjectCard
+                repo={entry.repo}
+                featured
+                summaryOverride={entry.summary}
+                liveDemoUrl={entry.liveUrl}
+                liveDemoLabel={entry.liveLabel}
+              />
             </motion.div>
           ))}
         </motion.div>
