@@ -24,7 +24,7 @@ export const EXPERIENCE = [
   {
     period: "2023 - PRESENT",
     role: "Data Scientist",
-    company: "Spirent Communications",
+    company: "Keysight (formerly Spirent)",
     description:
       "Applied ML, GenAI, and analytics at scale across telecom support data, delivering risk and revenue intelligence with measurable business impact."
   },
@@ -37,7 +37,7 @@ export const EXPERIENCE = [
   },
   {
     period: "2020 - 2021",
-    role: "Machine Learning Engineer",
+    role: "Data Scientist",
     company: "Aliste Technologies",
     description:
       "Developed end-to-end ML features from model training to production deployment workflows."
